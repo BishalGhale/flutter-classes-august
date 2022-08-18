@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class InstaPost extends StatelessWidget {
   const InstaPost({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class InstaPost extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
+      body: ListView(
         children: [
           /// username and profile picture
 
@@ -42,8 +43,30 @@ class InstaPost extends StatelessWidget {
 
           /// actual post image
           ///
-          Image.network(image)
+          Image.network(image),
+          // Image.asset(
+          //   'resources/images/car.jpg',
+          //   height: 200,
+          //   width: 200,
+          //   fit: BoxFit.cover,
+          // )
+
           //// like comment share buttons
+          Row(
+            children: [
+              Icon(
+                Fontisto.heart_alt,
+                color: Colors.red,
+              ),
+              Icon(EvilIcons.comment),
+              Icon(Feather.send)
+            ],
+          ),
+          FadeInImage(
+            placeholder: AssetImage('resources/images/placeholder.jpg'),
+            image: NetworkImage(image)
+            // NetworkImage(image),
+          ),
 
           /// caption
         ],
@@ -60,3 +83,5 @@ class InstaPost extends StatelessWidget {
 
 /// To make things circular
 /// ClipRRect
+/// 
+/// FadeInImage: 
